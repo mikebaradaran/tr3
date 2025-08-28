@@ -83,11 +83,17 @@ function savedClick() {
     }
     data.push(learner);
     setCourseData();
-    restForm();
-    showRegisteredStudentsdropDown();
+    resetForm();
+    // showRegisteredStudentsdropDown();
+    if(nameChanged){
+        let opNewName = document.createElement("option");
+        opNewName.innerText = learnerName;
+        registeredStudentsdropDown.appendChild(opNewName);
+        nameChanged = false;    
+    }
 }
 //-------------------------------------------------------
-function restForm() {
+function resetForm() {
     setValue('learner', '').focus();
     setValue('comments', '');
 
@@ -118,14 +124,16 @@ function setupOptions() {
 function generateReports() {
     let report = getValue("chatGptInstructions") + "\n";
     report += `Insert "w/c ${getValue("start_date")} - ${getValue("course_title")} 
-    at the start of each student report and after their name:${JSON.stringify(data)}
-${JSON.stringify(data)}`;
+    at the start of each student report and after their name:${JSON.stringify(data)}`;
 
     navigator.clipboard.writeText(report)
         .then(() => alert("Copied to clipboard!"))
         .catch(err => alert("Failed to copy: " + err));
 }
 
+function txtNameChanged() {
+    nameChanged = true;        
+}
 //-------------------------------- Utils ---------------
 function getValue(optionID) {
     const op = document.getElementById(optionID);
@@ -133,7 +141,9 @@ function getValue(optionID) {
 }
 
 function setValue(optionID, newValue) {
-    document.getElementById(optionID).value = newValue;
+    const op = document.getElementById(optionID);
+    op.value = newValue;
+    return op;
 }
 
 function makeTag(tagName, tagText, tagContainer, tagClass = "roundEdge") {
