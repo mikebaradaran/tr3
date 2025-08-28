@@ -120,7 +120,7 @@ function setupOptions() {
     }
     setValue("start_date", new Date().toISOString().split('T')[0]);
 }
-//-------------------------------------------------------------------
+//-----------------------------------------------------------------
 function generateReports() {
     let report = getValue("chatGptInstructions") + "\n";
     report += `Insert "w/c ${getValue("start_date")} - ${getValue("course_title")} 
