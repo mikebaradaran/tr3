@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutor Feedback</title>
+    <link href="StyleSheet1.css" rel="stylesheet" />
+    <script src="JavaScript1.js" defer></script>
+</head>
+
+<body>
+    <div>
+        <h1>Tutor feedback generator</h1>
+        <label for="learner" class="feedback-area">Learner name:</label>
+        <input type="text" id="learner" name="learner" class="roundEdge" />
+        <select id="registeredStudentsdropDown" onchange="typeStudent()"></select>
+        <button onclick="pasteStudentNames()">Paste names from 📋</button>
+
+        <hr />
+        <div id="options"></div>
+        <hr />
+
+        <textarea id="comments" placeholder="Additional comments + recommendations for further learning:
+💡 Tip: if you type <name>, the learner's name will be inserted."></textarea>
+        <button onclick="savedClick()">💾 Save student record</button>
+        <!-- <hr /> -->
+        <div id="reportPart">
+            <label for="course_title">Course title:</label>
+            <input type="text" id="course_title" class="roundEdge" />
+            <label for="course_date">Start date:</label>
+            <input type="date" id="start_date" class="roundEdge" />
+            <button onclick="generateReports()"> 📜Generate report</button>
+            <hr />
+            <button onclick="deleteCourseData()">❌ Delete last class data and start a new class</button>
+        </div>
+        <!-- <hr /> -->
+        <div id="adminPart">
+            <div class="input-group">
+                <span>Options:</span> <input type="text" id="radioNames"
+                    value="punctuality,camera,engagement,work ethic,mic" />
+            </div>
+            <div class="input-group">
+                <span>States:</span> <input type="text" id="states" value="Positive,Neutral,Negative,N/A" />
+                <button onclick="setupOptions()">Reset form</button>
+            </div>
+        </div>
+        Instructions to ChatGPT:
+        <textarea id="chatGptInstructions"></textarea>
+
+    </div>
+</body>
+
+</html>
