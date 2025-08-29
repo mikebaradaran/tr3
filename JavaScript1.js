@@ -75,8 +75,8 @@ function savedClick() {
     let comments = getValue('comments').replace(/<name>/g, fname);
 
     let learner = {
-        'name': learnerName,
-        'comments': comments
+        name: learnerName,
+        comments: comments
     };
     for (const attr of radioNames) {
         learner[attr] = getValue(attr);
